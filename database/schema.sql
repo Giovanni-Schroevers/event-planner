@@ -1,0 +1,42 @@
+CREATE DATABASE IF NOT EXISTS event_planner;
+USE event_planner;
+
+CREATE TABLE users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    firstname VARCHAR(100) NOT NULL,
+    middle_name VARCHAR(100) NULL,
+    lastname VARCHAR(100) NOT NULL,
+    role ENUM('member', 'employee') NOT NULL DEFAULT 'member',
+    membership_number VARCHAR(50) NULL UNIQUE,
+    phone VARCHAR(20) NULL,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    last_login_at TIMESTAMP NULL
+);
+
+CREATE TABLE events (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NULL,
+    location VARCHAR(255) NULL,
+    event_date DATETIME NOT NULL,
+    registration_deadline DATETIME NOT NULL,
+    price DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    max_participants INT UNSIGNED NULL,
+    created_by INT UNSIGNED NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE registrations (
+    user_id INT UNSIGNED NOT NULL,
+    event_id INT UNSIGNED NOT NULL,
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, event_id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
+);
