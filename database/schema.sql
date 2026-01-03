@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS event_planner;
+CREATE DATABASE IF NOT EXISTS event_planner CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE event_planner;
 
 CREATE TABLE users (

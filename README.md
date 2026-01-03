@@ -19,13 +19,13 @@ To run this project, you need to have the following installed:
 Create the database schema:
 
 ```bash
-docker exec -i event-planner-db mysql -uroot -proot < database/schema.sql
+docker exec mysql mysql -uroot -proot -e "source /sql/schema.sql"
 ```
 
 Seed the database with test data (optional):
 
 ```bash
-docker exec -i event-planner-db mysql -uroot -proot < database/seeder.sql
+docker exec mysql mysql -uroot -proot -e "source /sql/seeder.sql"
 ```
 
 ### Database Access

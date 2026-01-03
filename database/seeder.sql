@@ -1,4 +1,14 @@
+SET NAMES 'utf8mb4';
 USE event_planner;
+
+-- Clear existing data (order matters due to foreign key constraints)
+DELETE FROM registrations;
+DELETE FROM events;
+DELETE FROM users;
+
+-- Reset auto-increment counters
+ALTER TABLE users AUTO_INCREMENT = 1;
+ALTER TABLE events AUTO_INCREMENT = 1;
 
 -- Employees (password is 'wachtwoord123' hashed with bcrypt)
 INSERT INTO users (email, password, firstname, middle_name, lastname, role, phone, is_active) VALUES
@@ -45,7 +55,7 @@ INSERT INTO events (name, description, location, event_date, registration_deadli
 
 -- Event 4: UPCOMING, registration open, almost full
 INSERT INTO events (name, description, location, event_date, registration_deadline, price, max_participants, created_by) VALUES
-('Pubquiz Avond', 'Test je kennis tijdens onze gezellige pubquiz! Teams van 4-6 personen. Mooie prijzen te winnen. Inclusief twee consumpties.', 'Café 't Hoekje', '2026-02-14 20:00:00', '2026-02-10 23:59:59', 12.50, 8, 2);
+('Pubquiz Avond', 'Test je kennis tijdens onze gezellige pubquiz! Teams van 4-6 personen. Mooie prijzen te winnen. Inclusief twee consumpties.', 'Café ''t Hoekje', '2026-02-14 20:00:00', '2026-02-10 23:59:59', 12.50, 8, 2);
 
 -- Events by Pieter Jansen (employee id 3)
 -- Event 5: UPCOMING, registration open, half full
