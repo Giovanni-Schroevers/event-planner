@@ -10,34 +10,34 @@ DELETE FROM users;
 ALTER TABLE users AUTO_INCREMENT = 1;
 ALTER TABLE events AUTO_INCREMENT = 1;
 
--- Employees (password is 'wachtwoord123' hashed with bcrypt)
+-- Employees (password is 'test1234' hashed with bcrypt)
 INSERT INTO users (email, password, firstname, middle_name, lastname, role, phone, is_active) VALUES
-('jan.devries@dorpsvereniging.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Jan', 'de', 'Vries', 'employee', '06-12345678', TRUE),
-('maria.bakker@dorpsvereniging.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Maria', NULL, 'Bakker', 'employee', '06-23456789', TRUE),
-('pieter.jansen@dorpsvereniging.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Pieter', NULL, 'Jansen', 'employee', '06-34567890', TRUE);
+('jan.devries@dorpsvereniging.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Jan', 'de', 'Vries', 'employee', '06-12345678', TRUE),
+('maria.bakker@dorpsvereniging.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Maria', NULL, 'Bakker', 'employee', '06-23456789', TRUE),
+('pieter.jansen@dorpsvereniging.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Pieter', NULL, 'Jansen', 'employee', '06-34567890', TRUE);
 
--- Members (password is 'lid12345' hashed with bcrypt)
+-- Members (password is 'test1234' hashed with bcrypt)
 INSERT INTO users (email, password, firstname, middle_name, lastname, role, membership_number, phone, is_active) VALUES
-('sophie.mulder@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Sophie', NULL, 'Mulder', 'member', 'LID-2024-001', '06-11111111', TRUE),
-('thomas.visser@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Thomas', NULL, 'Visser', 'member', 'LID-2024-002', '06-22222222', TRUE),
-('lisa.smit@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Lisa', NULL, 'Smit', 'member', 'LID-2024-003', '06-33333333', TRUE),
-('mark.dekker@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Mark', 'van', 'Dekker', 'member', 'LID-2024-004', '06-44444444', TRUE),
-('emma.bos@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Emma', NULL, 'Bos', 'member', 'LID-2024-005', '06-55555555', TRUE),
-('daan.peters@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Daan', NULL, 'Peters', 'member', 'LID-2024-006', '06-66666666', TRUE),
-('fleur.hendriks@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Fleur', NULL, 'Hendriks', 'member', 'LID-2024-007', '06-77777777', TRUE),
-('lucas.vandenBerg@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Lucas', 'van den', 'Berg', 'member', 'LID-2024-008', '06-88888888', TRUE),
-('julia.dejong@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Julia', 'de', 'Jong', 'member', 'LID-2024-009', '06-99999999', TRUE),
-('sem.vandijk@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Sem', 'van', 'Dijk', 'member', 'LID-2024-010', '06-10101010', TRUE),
-('anna.vanLeeuwen@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Anna', 'van', 'Leeuwen', 'member', 'LID-2024-011', '06-11112222', TRUE),
-('ruben.janssen@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Ruben', NULL, 'Janssen', 'member', 'LID-2024-012', '06-12121212', TRUE),
-('isa.vermeer@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Isa', NULL, 'Vermeer', 'member', 'LID-2024-013', '06-13131313', TRUE),
-('bram.kuiper@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Bram', NULL, 'Kuiper', 'member', 'LID-2024-014', '06-14141414', TRUE),
-('lotte.vanderMeer@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Lotte', 'van der', 'Meer', 'member', 'LID-2024-015', '06-15151515', TRUE),
-('finn.dewit@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Finn', 'de', 'Wit', 'member', 'LID-2024-016', '06-16161616', TRUE),
-('eva.koster@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Eva', NULL, 'Koster', 'member', 'LID-2024-017', '06-17171717', TRUE),
-('jesse.vanderLinden@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Jesse', 'van der', 'Linden', 'member', 'LID-2024-018', '06-18181818', TRUE),
-('noa.vanVliet@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Noa', 'van', 'Vliet', 'member', 'LID-2024-019', '06-19191919', TRUE),
-('max.molenaar@email.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Max', NULL, 'Molenaar', 'member', 'LID-2024-020', '06-20202020', TRUE);
+('sophie.mulder@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Sophie', NULL, 'Mulder', 'member', 'LID-2024-001', '06-11111111', TRUE),
+('thomas.visser@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Thomas', NULL, 'Visser', 'member', 'LID-2024-002', '06-22222222', TRUE),
+('lisa.smit@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Lisa', NULL, 'Smit', 'member', 'LID-2024-003', '06-33333333', TRUE),
+('mark.dekker@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Mark', 'van', 'Dekker', 'member', 'LID-2024-004', '06-44444444', TRUE),
+('emma.bos@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Emma', NULL, 'Bos', 'member', 'LID-2024-005', '06-55555555', TRUE),
+('daan.peters@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Daan', NULL, 'Peters', 'member', 'LID-2024-006', '06-66666666', TRUE),
+('fleur.hendriks@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Fleur', NULL, 'Hendriks', 'member', 'LID-2024-007', '06-77777777', TRUE),
+('lucas.vandenBerg@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Lucas', 'van den', 'Berg', 'member', 'LID-2024-008', '06-88888888', TRUE),
+('julia.dejong@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Julia', 'de', 'Jong', 'member', 'LID-2024-009', '06-99999999', TRUE),
+('sem.vandijk@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Sem', 'van', 'Dijk', 'member', 'LID-2024-010', '06-10101010', TRUE),
+('anna.vanLeeuwen@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Anna', 'van', 'Leeuwen', 'member', 'LID-2024-011', '06-11112222', TRUE),
+('ruben.janssen@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Ruben', NULL, 'Janssen', 'member', 'LID-2024-012', '06-12121212', TRUE),
+('isa.vermeer@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Isa', NULL, 'Vermeer', 'member', 'LID-2024-013', '06-13131313', TRUE),
+('bram.kuiper@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Bram', NULL, 'Kuiper', 'member', 'LID-2024-014', '06-14141414', TRUE),
+('lotte.vanderMeer@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Lotte', 'van der', 'Meer', 'member', 'LID-2024-015', '06-15151515', TRUE),
+('finn.dewit@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Finn', 'de', 'Wit', 'member', 'LID-2024-016', '06-16161616', TRUE),
+('eva.koster@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Eva', NULL, 'Koster', 'member', 'LID-2024-017', '06-17171717', TRUE),
+('jesse.vanderLinden@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Jesse', 'van der', 'Linden', 'member', 'LID-2024-018', '06-18181818', TRUE),
+('noa.vanVliet@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Noa', 'van', 'Vliet', 'member', 'LID-2024-019', '06-19191919', TRUE),
+('max.molenaar@email.nl', '$2y$12$ityGfQPRIaMfduqT7xc3hu2Tx8aZXW5RMGWCcWncCIwLSAeM91OYu', 'Max', NULL, 'Molenaar', 'member', 'LID-2024-020', '06-20202020', TRUE);
 
 -- Events by Jan de Vries (employee id 1)
 -- Event 1: PAST (already happened)
