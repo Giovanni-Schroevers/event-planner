@@ -263,6 +263,11 @@ footer {
 
     & .event-list {
         grid-template-columns: repeat(6, auto);
+
+        & .event-full {
+            color: red;
+            font-weight: bold;
+        }
     }
 }
 
@@ -285,6 +290,7 @@ footer {
         padding: 20px 10px;
 
         & * {
+            color: var(--primary-contrast);
             margin: 0;
         }
     }

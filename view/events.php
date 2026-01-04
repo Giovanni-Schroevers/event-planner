@@ -33,9 +33,9 @@
                         <?php if ($event->maxParticipants): ?> / <?= $event->maxParticipants ?><?php endif; ?>
                     </p>
                     <?php if (isset($_SESSION['user']) && $_SESSION['user']->isEmployee()): ?>
-                        <a href="/events/<?= $event->id; ?>/edit">Bewerken</a>
+                        <a href="/events/<?= $event->id; ?>">Bewerken</a>
                     <?php elseif ($event->isFull()): ?>
-                        <span style="color: red; font-weight: bold;">Vol</span>
+                        <span class="event-full">Vol</span>
                     <?php else: ?>
                         <a href="/events/<?= $event->id; ?>">Inschrijven</a>
                     <?php endif; ?>
