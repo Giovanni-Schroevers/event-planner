@@ -37,21 +37,28 @@ class Router
         if ($path !== '/' && str_ends_with($path, '/')) {
             $path = rtrim($path, '/');
         }
-        if (!isset($this->routes[$method][$path])) {
-            $this->handleNotFound();
-            return;
+
+        foreach ($this->routes[$method] ?? [] as $routePath => $action) {
+            $pattern = preg_replace('/\{([a-zA-Z0-9_]+)\}/', '(?P<$1>[^/]+)', $routePath);
+            $pattern = "#^" . $pattern . "$#";
+
+            if (preg_match($pattern, $path, $matches)) {
+                $params = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);
+                $this->executeAction($action, $params);
+                return;
+            }
         }
 
-        $action = $this->routes[$method][$path];
-        $this->executeAction($action);
+        $this->handleNotFound();
     }
 
     /**
      * Execute a controller action
      * 
      * @param string $action Format: "ControllerName@methodName"
+     * @param array $params Dynamic route parameters
      */
-    private function executeAction(string $action): void
+    private function executeAction(string $action, array $params = []): void
     {
         [$controllerName, $methodName] = explode('@', $action);
 
@@ -73,7 +80,7 @@ class Router
             throw new RuntimeException("Method not found: $controllerName@$methodName");
         }
 
-        $controller->$methodName();
+        $controller->$methodName(...array_values($params));
     }
 
     /**
@@ -82,7 +89,7 @@ class Router
     private function handleNotFound(): void
     {
         http_response_code(404);
-        
+
         $notFoundView = __DIR__ . '/../view/404.php';
         if (file_exists($notFoundView)) {
             ob_start();

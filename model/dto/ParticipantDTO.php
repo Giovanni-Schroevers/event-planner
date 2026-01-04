@@ -1,5 +1,6 @@
 <?php
-class UserSessionDTO
+
+class ParticipantDTO
 {
     public function __construct(
         public readonly int $id,
@@ -7,7 +8,8 @@ class UserSessionDTO
         public readonly string $firstname,
         public readonly ?string $middleName,
         public readonly string $lastname,
-        public readonly string $role,
+        public readonly ?string $membershipNumber,
+        public readonly string $registeredAt
     ) {
     }
 
@@ -19,11 +21,12 @@ class UserSessionDTO
             firstname: $data['firstname'],
             middleName: $data['middle_name'] ?? null,
             lastname: $data['lastname'],
-            role: $data['role'],
+            membershipNumber: $data['membership_number'] ?? null,
+            registeredAt: $data['registered_at']
         );
     }
 
-    public function getDisplayName(): string
+    public function getFullName(): string
     {
         $parts = [$this->firstname];
         if ($this->middleName) {
@@ -33,8 +36,8 @@ class UserSessionDTO
         return implode(' ', $parts);
     }
 
-    public function isEmployee(): bool
+    public function getFormattedRegistrationDate(): string
     {
-        return $this->role === 'employee';
+        return date('d-m-Y H:i', strtotime($this->registeredAt));
     }
 }

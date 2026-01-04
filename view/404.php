@@ -1,3 +1,3 @@
-<h1>404 - Page Not Found</h1>
-<p>The page you're looking for doesn't exist.</p>
-<p><a href="/">Return to homepage</a></p>
+<h1>404 - Pagina niet gevonden</h1>
+<p>De pagina die je zoekt bestaat niet.</p>
+<p><a href="/">Terug naar de homepage</a></p>

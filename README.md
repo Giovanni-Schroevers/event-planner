@@ -5,7 +5,8 @@
 To run this project, you need to have the following installed:
 
 - Docker Desktop
-- PHP 8.4
+- PHP 8.5
+  - Make sure `extension=pdo_mysql` is configured in your php.ini
 
 ## How to run the project
 

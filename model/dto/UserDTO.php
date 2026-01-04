@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Full User Data Transfer Object
- * Used for profile pages, admin views, and complete user data
- */
 class UserDTO
 {
     public function __construct(
@@ -19,11 +15,9 @@ class UserDTO
         public readonly string $createdAt,
         public readonly string $updatedAt,
         public readonly ?string $lastLoginAt,
-    ) {}
+    ) {
+    }
 
-    /**
-     * Create a UserDTO from a database row
-     */
     public static function fromArray(array $data): self
     {
         return new self(
@@ -42,9 +36,6 @@ class UserDTO
         );
     }
 
-    /**
-     * Get full name including middle name if present
-     */
     public function getFullName(): string
     {
         $parts = [$this->firstname];
@@ -55,9 +46,6 @@ class UserDTO
         return implode(' ', $parts);
     }
 
-    /**
-     * Check if user is an employee
-     */
     public function isEmployee(): bool
     {
         return $this->role === 'employee';

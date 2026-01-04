@@ -51,7 +51,7 @@ INSERT INTO events (name, description, location, event_date, registration_deadli
 -- Events by Maria Bakker (employee id 2)
 -- Event 3: PAST
 INSERT INTO events (name, description, location, event_date, registration_deadline, price, max_participants, created_by) VALUES
-('Sinterklaasfeest voor Kinderen', 'De sint komt naar ons dorp! Inclusief entertainment, pepernoten en een cadeautje voor elk kind. Voor kinderen van 3-10 jaar.', 'Basisschool Het Kompas', '2024-12-05 14:00:00', '2024-11-28 23:59:59', 10.00, 24, 2);
+('Sinterklaasfeest voor Kinderen', 'De sint komt naar ons dorp! Inclusief entertainment, pepernoten en een cadeautje voor elk kind. Voor kinderen van 3-10 jaar.', 'Basisschool Het Kompas', '2025-12-05 14:00:00', '2025-11-28 23:59:59', 10.00, 24, 2);
 
 -- Event 4: UPCOMING, registration open, almost full
 INSERT INTO events (name, description, location, event_date, registration_deadline, price, max_participants, created_by) VALUES

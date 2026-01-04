@@ -53,4 +53,71 @@ class User
             'membership_number' => $membershipNumber
         ]);
     }
+
+    public static function findById(int $id): ?UserDTO
+    {
+        $connection = Database::getConnection();
+        $stmt = $connection->prepare('SELECT * FROM users WHERE id = :id');
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetch();
+
+        require_once __DIR__ . '/dto/UserDTO.php';
+        return $result ? UserDTO::fromArray($result) : null;
+    }
+
+    public static function update(int $id, array $data): bool
+    {
+        $connection = Database::getConnection();
+        $fields = [];
+        $params = ['id' => $id];
+
+        if (isset($data['firstname'])) {
+            $fields[] = 'firstname = :firstname';
+            $params['firstname'] = $data['firstname'];
+        }
+        if (isset($data['middle_name'])) {
+            $fields[] = 'middle_name = :middle_name';
+            $params['middle_name'] = $data['middle_name'];
+        }
+        if (isset($data['lastname'])) {
+            $fields[] = 'lastname = :lastname';
+            $params['lastname'] = $data['lastname'];
+        }
+        if (isset($data['phone'])) {
+            $fields[] = 'phone = :phone';
+            $params['phone'] = $data['phone'];
+        }
+
+        if (empty($fields)) {
+            return false;
+        }
+
+        $sql = 'UPDATE users SET ' . implode(', ', $fields) . ' WHERE id = :id';
+        $stmt = $connection->prepare($sql);
+        return $stmt->execute($params);
+    }
+
+    public static function deactivate(int $id): bool
+    {
+        $connection = Database::getConnection();
+        $stmt = $connection->prepare('UPDATE users SET is_active = 0 WHERE id = :id');
+        return $stmt->execute(['id' => $id]);
+    }
+
+    public static function getByEventId(int $eventId): array
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare('
+            SELECT u.id, u.firstname, u.middle_name, u.lastname, u.email, u.membership_number, r.registered_at 
+            FROM users u 
+            JOIN registrations r ON u.id = r.user_id 
+            WHERE r.event_id = :event_id 
+            ORDER BY r.registered_at
+        ');
+        $stmt->execute(['event_id' => $eventId]);
+        $results = $stmt->fetchAll();
+
+        require_once __DIR__ . '/dto/ParticipantDTO.php';
+        return array_map(fn($row) => ParticipantDTO::fromArray($row), $results);
+    }
 }

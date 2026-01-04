@@ -1,6 +1,6 @@
 <?php
 $menu = [
-    'Events' => '/events',
+    'Evenementen' => '/events',
 ];
 
 if (isset($_SESSION['user'])) {
